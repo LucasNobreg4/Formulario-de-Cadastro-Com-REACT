@@ -1,32 +1,23 @@
 import React, { useState } from "react";
+import Obrigado from "./Obrigado";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
-import { Typography } from "@material-ui/core";
+
 
 function FormularioCadastro({ aoEnviar, aoValidar }) {
-  const [etapaAtual, setEtapaAtual] = useState(0)
-  //↓↓↓↓↓↓↓A Função abaixo define a renderização condicional dos elementos na tela↓↓↓↓↓↓↓↓
-  function formularioAtual(etapa) {
-    switch (etapa) {
-      case 0:
-        return <DadosUsuario />;
-      case 1:
-        return <DadosPessoais aoEnviar={aoEnviar} aoValidar={aoValidar} />;
-      case 2:
-        return <DadosEntrega />;
-      default:
-        <Typography>ERRO ao selecionar Formulario</Typography>;
-    }
+  const [etapaAtual, setEtapaAtual] = useState(0);
+  const formularios = [
+    <DadosUsuario aoEnviar={proximo} />,
+    <DadosPessoais aoEnviar={proximo} aoValidar={aoValidar} />,
+    <DadosEntrega aoEnviar={proximo} />,
+    <Obrigado />,
+  ];
+  /* ↓↓↓↓↓essa função abaixo controla a renderização condicional adicionando +1 no setState da EtapaAtual↓↓↓↓↓ */
+  function proximo() {
+    setEtapaAtual(etapaAtual + 1);
   }
-  return (
-    <>
-      {formularioAtual(etapaAtual)}
-
-    </>
-  );
+    return <>{formularios[etapaAtual]}</>;
 }
-
-
 
 export default FormularioCadastro;

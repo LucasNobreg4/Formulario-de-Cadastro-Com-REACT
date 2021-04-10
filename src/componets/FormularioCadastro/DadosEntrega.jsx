@@ -2,17 +2,24 @@ import { Button, TextField } from "@material-ui/core";
 
 import React from "react";
 
-function DadosEntrega() {
+function DadosEntrega({aoEnviar}) {
   return (
     <>
-      <form>
+      <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        aoEnviar();
+      }}
+      >
+        
         <TextField
           id="cep"
-          label="CEP"
+          label="CEP (apenas números)"
           type="number"
           margin="normal"
           variant="outlined"
           fullWidth
+          required
         ></TextField>
         <TextField
           id="endeco"
@@ -21,6 +28,7 @@ function DadosEntrega() {
           variant="outlined"
           margin="normal"
           fullWidth
+          required
         ></TextField>
         <TextField
           id="numero"
@@ -28,13 +36,15 @@ function DadosEntrega() {
           type="number"
           margin="normal"
           variant="outlined"
+          required
         ></TextField>
         <TextField
-          id="cidade"
+          id="estado"
           label="Estado"
           type="text"
           variant="outlined"
           margin="normal"
+          required
         ></TextField>
         <TextField
           id="cidade"
@@ -42,10 +52,11 @@ function DadosEntrega() {
           type="text"
           variant="outlined"
           margin="normal"
+          required
         ></TextField>
         <Button variant="contained" type="submit" color="primary" fullWidth>
             
-          Finalizar Cadastro
+          Finalizar Pedido
         </Button>
       </form>
     </>

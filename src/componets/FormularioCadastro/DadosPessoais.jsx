@@ -26,6 +26,7 @@ function DadosPessoais({ aoEnviar, aoValidar }) {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
       />
       <TextField
         value={sobrenome}
@@ -37,6 +38,7 @@ function DadosPessoais({ aoEnviar, aoValidar }) {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
       />
       <TextField
         value={cpf}
@@ -56,6 +58,7 @@ function DadosPessoais({ aoEnviar, aoValidar }) {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
       />
       <FormControlLabel
         label="Promoções"
